@@ -72,6 +72,7 @@ export default {
 
     saveApp() {
       var appForm = {};
+
       appForm["name"] = this.name;
       appForm["icon"] = this.icon;
       appForm["background"] = this.iconBackground;
@@ -100,7 +101,7 @@ body {
 }
 
 .card {
-  background-color: turquoise;
+  background-color: #0297e5;
   border-radius: 4px;
   box-shadow: 4px 4px 12px 0px #00000094;
   padding: 22px;
@@ -154,18 +155,20 @@ body {
 
 @media only screen and (max-width: 425px) {
   .card {
-    max-width: 100%;
+    max-width: 100vw;
+    min-height: 100vh;
+    border-radius: unset;
   }
 
   .entry-data {
     padding-right: 0px;
-  }
 
-  .entry-data::after {
-    height: 1px;
-    width: 100%;
-    top: unset;
-    margin: 20px 0px 0px 0px;
+    &::after {
+      height: 1px;
+      width: 100%;
+      top: unset;
+      margin: 20px 0px 0px 0px;
+    }
   }
 
   .title.mb-12 {
@@ -178,6 +181,8 @@ body {
     border: 1px transparent;
     color: #fff;
     background-color: #0297e5;
+    border: 1px solid #fff;
+    box-shadow: 1px 1px 4px 0px #fff
   }
 }
 

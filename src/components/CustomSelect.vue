@@ -50,6 +50,7 @@ export default {
     border-radius: 2px;
     padding: 8px;
     font-size: 1rem;
+    background-color: #fff;
   }
 }
 </style>

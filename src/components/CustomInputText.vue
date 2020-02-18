@@ -32,7 +32,7 @@ export default {
 .input-group {
   display: flex;
   flex-flow: column nowrap;
-  margin: 12px 0px;
+  margin: 14px 0px;
 
   label {
     color: #fff;
@@ -44,9 +44,14 @@ export default {
   input {
     border: 1px solid transparent;
     border-radius: 2px;
-    // min-height: 36px;
     padding: 8px;
     font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .input-group {
+    margin: 16px 0px;
   }
 }
 </style>
