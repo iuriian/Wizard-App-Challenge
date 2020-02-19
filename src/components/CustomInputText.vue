@@ -1,5 +1,5 @@
 <template>
-  <div class="input-group">
+  <div class="input-group-text">
     <label for="name">APP NAME</label>
     <input
       type="text"
@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style lang="scss">
-.input-group {
+.input-group-text {
   display: flex;
   flex-flow: column nowrap;
   margin: 14px 0px;
@@ -50,8 +50,17 @@ export default {
 }
 
 @media only screen and (max-width: 425px) {
-  .input-group {
+  .input-group-text {
     margin: 16px 0px;
+
+    label {
+      font-size: 0.8rem;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 0.8rem;
+    }
   }
 }
 </style>

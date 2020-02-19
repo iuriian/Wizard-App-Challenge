@@ -1,9 +1,9 @@
 <template>
   <div id="app" class="container">
     <div class="card">
-      <div class="columns is-desktop is-row-tablet is-vcentered">
-        <i class="fas fa-times"></i>
-        <div class="column is-8 is-two-thirds-tablet">
+      <i class="fas fa-times"></i>
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-8 col-lg-8 line-right">
           <div class="entry-data">
             <h4 class="title">Create Your App</h4>
             <custom-input-text @getName="setName"></custom-input-text>
@@ -12,15 +12,15 @@
             <custom-select @getCategory="setCategory"></custom-select>
           </div>
         </div>
-        <div class="column">
-          <h4 class="title mb-12">APP'S CARD PREVIEW</h4>
+        <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+          <h4 class="title-preview">APP'S CARD PREVIEW</h4>
           <card-preview-app
             :name="name"
             :icon="icon"
             :iconBackground="iconBackground"
             :category="category"
           ></card-preview-app>
-          <div class="container has-text-centered">
+          <div class="container-button">
             <button class="button" @click="saveApp">SAVE APP</button>
           </div>
         </div>
@@ -85,8 +85,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import url("../node_modules/bootstrap/dist/css/bootstrap-grid.css");
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
-@import url("../node_modules/bulma/bulma.sass");
 
 html,
 body {
@@ -100,17 +100,36 @@ body {
   box-sizing: border-box;
 }
 
+.container {
+  min-height: 100%;
+  display: flex;
+}
+
 .card {
+  width: 90%;
   background-color: #0297e5;
   border-radius: 4px;
   box-shadow: 4px 4px 12px 0px #00000094;
-  padding: 22px;
-  max-width: 70%;
+  padding: 30px;
   margin: auto;
+  position: relative;
 
   i.fas.fa-times {
-    float: right;
     font-size: 1.4rem;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+  }
+
+  .line-right::after {
+    content: "";
+    background-color: #fff;
+    height: 100%;
+    width: 1px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-right: 12px;
   }
 }
 
@@ -124,105 +143,77 @@ body {
     font-weight: 600;
     margin: 0px 0px 22px;
   }
-
-  &::after {
-    content: "";
-    background-color: #fff;
-    height: 100%;
-    width: 1px;
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
 }
 
-.button {
-  margin-top: 26px;
-  color: #000;
-  font-weight: 600;
-  font-size: 1rem;
-  border: 1px solid #000;
-  border-radius: 4px;
-  padding: 8px 22px;
-}
-
-.title.mb-12 {
+.title-preview {
   font-size: 1rem;
   font-weight: 600;
   color: #fff;
   margin-bottom: 12px;
 }
 
-@media only screen and (max-width: 425px) {
-  .card {
-    max-width: 100vw;
-    min-height: 100vh;
-    border-radius: unset;
-  }
-
-  .entry-data {
-    padding-right: 0px;
-
-    &::after {
-      height: 1px;
-      width: 100%;
-      top: unset;
-      margin: 20px 0px 0px 0px;
-    }
-  }
-
-  .title.mb-12 {
-    margin-top: 46px;
-  }
+.container-button {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
 
   .button {
-    width: 100%;
-    padding: 16px;
-    border: 1px transparent;
+    padding: 12px 26px;
     color: #fff;
     background-color: #0297e5;
     border: 1px solid #fff;
-    box-shadow: 1px 1px 4px 0px #fff
+    box-shadow: 1px 1px 4px 0px #fff;
+    margin-top: 26px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    border-radius: 4px;
   }
 }
 
-@media only screen and (min-width: 426px) and (max-width: 768px) {
+@media screen and (max-width: 425px) {
+  .container {
+    padding: 0px 0px;
+  }
+
   .card {
-    max-width: 100%;
-    height: 100vh;
-  }
+    border-radius: unset;
+    min-width: 100%;
 
-  .entry-data {
-    padding-right: 48px;
-  }
+    .line-right::after {
+      width: 92%;
+      margin: 0px 14px;
+      height: 1px;
+      top: unset;
+      bottom: 0px;
+    }
+    .entry-data {
+      padding: 0px 0px 24px;
+    }
 
-  .entry-data::after {
-    height: 100%;
-    width: 1px;
-    top: 0;
-    margin: 12px 0px;
+    .button {
+      width: 100%;
+    }
   }
+}
 
-  .is-row-tablet {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    display: flex;
-  }
+@media screen and (min-width: 426px) and (max-width: 767px) {
+  .card {
+    .line-right::after {
+      width: 92%;
+      margin: 0px 16px;
+      height: 1px;
+      top: unset;
+      bottom: 0px;
+    }
 
-  .is-8-tablet {
-    flex: 8;
-  }
+    .entry-data {
+      padding: 0px 0px 24px;
+    }
 
-  .is-row-tablet .column {
-    flex: 1;
-  }
-
-  .column:not(.is-two-thirds-tablet) {
-    padding-left: 26px;
-  }
-
-  .is-row-tablet .is-two-thirds-tablet {
-    flex: 2;
+    .button {
+      width: 100%;
+    }
   }
 }
 </style>

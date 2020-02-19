@@ -1,5 +1,5 @@
 <template>
-  <div class="input-group">
+  <div class="input-group-color">
     <label for="color">ICON'S BACKGROUND COLOR</label>
     <div class="group-cta">
       <span class="picker-text">Pick a color</span>
@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style lang="scss">
-.input-group {
+.input-group-color {
   display: flex;
   flex-flow: column nowrap;
   margin: 12px 0px;
@@ -75,6 +75,20 @@ export default {
       padding: 8px;
       min-height: 36px;
       opacity: 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .input-group-color {
+    margin: 16px 0px;
+
+    label {
+      font-size: 0.8rem;
+    }
+
+    .picker-text {
+      font-size: 0.8rem;
     }
   }
 }

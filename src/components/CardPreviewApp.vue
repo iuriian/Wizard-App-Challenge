@@ -1,7 +1,7 @@
 <template>
   <div class="card-preview">
     <div class="card-header" v-bind:style="{ 'background-color': iconBackground }">
-      <img src="https://via.placeholder.com/150" alt="ícone do aplicativo" />
+      <img v-bind:src="icon ? icon : 'https://via.placeholder.com/150'" alt="ícone do aplicativo" />
     </div>
     <div class="card-body">
       <h4>{{ name ? name : 'App Name' }}</h4>
@@ -30,7 +30,7 @@ export default {
 
   .card-header {
     display: flex;
-    padding: 30px 0px;
+    padding: 16px 0px;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     background-color: #000;
@@ -100,12 +100,35 @@ export default {
   }
 }
 
-@media only screen and (min-width: 426px) and (max-width: 768px) {
+@media only screen and (min-width: 426px) and (max-width: 767px) {
   .card-preview {
     display: flex;
     flex-flow: row nowrap;
 
+    .card-header {
+      flex: 1;
+      border-top-right-radius: unset;
+      border-bottom-left-radius: 4px;
+      padding: 20px 0px;
+
+      img {
+        max-width: 60%;
+      }
+    }
+
     .card-body {
+      flex: 2;
+      padding: 8px;
+      border-bottom-left-radius: unset;
+      border-top-right-radius: 4px;
+
+      p {
+        margin: 6px 0px 12px;
+
+        &:last-child {
+          margin: 0;
+        }
+      }
     }
   }
 }
