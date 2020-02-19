@@ -2,11 +2,18 @@ import { mount } from '@vue/test-utils';
 import CustomInputText from '../../src/components/CustomInputText.vue';
 
 describe('Custom Input Text', () => {
-    const wrapper = mount(CustomInputText);
+    const dataComponent = CustomInputText.data();
+    const methodsComponent = CustomInputText.methods;
 
-    console.log(wrapper.get());
+    it('should be a string', () => {
+        expect(typeof dataComponent.name).toEqual("string");
+    });
 
-    xit('should return a string', () => {
-        expect(wrapper.name).toBe(String);
+    it('should be empty', () => {
+        expect(dataComponent.name).toBe("");
+    });
+
+    xit('should be called', () => {
+        expect(methodsComponent.sendData()).toHaveBeenCalled();
     });
 });
