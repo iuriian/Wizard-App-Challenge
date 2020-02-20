@@ -23,8 +23,7 @@ Desejáveis
 ## Tecnologias utilizadas
 
 - Vue CLI 4.2.0
-- Bulma 0.8.0
-- Vue2-Dropzone 3.6.0
+- Bootstrap 4.4.1
 
 ## Como instalar
 
