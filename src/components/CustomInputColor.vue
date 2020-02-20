@@ -12,7 +12,7 @@
 <script>
 export default {
   name: "CustomInputColor",
-  data: function() {
+  data() {
     return {
       color: "#000"
     };
