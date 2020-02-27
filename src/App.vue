@@ -26,6 +26,7 @@
         </div>
       </div>
     </div>
+    <modal-success v-if="showModal" @close="closeModal"></modal-success>
   </div>
 </template>
 
@@ -36,6 +37,8 @@ import CustomSelectVue from "./components/CustomSelect.vue";
 import CardPreviewAppVue from "./components/CardPreviewApp.vue";
 import CustomInputFileVue from "./components/CustomInputFile.vue";
 
+import ModalSuccessVue from "./components/modal-success";
+
 export default {
   name: "App",
   components: {
@@ -43,14 +46,16 @@ export default {
     "custom-input-file": CustomInputFileVue,
     "custom-input-color": CustomInputColorVue,
     "custom-select": CustomSelectVue,
-    "card-preview-app": CardPreviewAppVue
+    "card-preview-app": CardPreviewAppVue,
+    "modal-success": ModalSuccessVue
   },
   data() {
     return {
       name: "",
       icon: "",
       iconBackground: "",
-      category: ""
+      category: "",
+      showModal: false
     };
   },
   methods: {
@@ -70,6 +75,10 @@ export default {
       this.category = payload.category;
     },
 
+    closeModal(payload) {
+      this.showModal = payload.modal;
+    },
+
     saveApp() {
       var appForm = {};
 
@@ -78,6 +87,7 @@ export default {
       appForm["background"] = this.iconBackground;
       appForm["category"] = this.category;
 
+      this.showModal = true;
       console.log(appForm);
     }
   }
