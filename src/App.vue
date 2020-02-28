@@ -1,11 +1,14 @@
 <template>
   <div id="app" class="container">
     <div class="card">
-      <i class="fas fa-times"></i>
+      <i class="fas fa-times" @click="showModalWarning = true"></i>
       <div class="row">
         <div class="col-12 col-sm-12 col-md-8 col-lg-8 line-right">
           <div class="entry-data">
             <h4 class="title">Create Your App</h4>
+            <div class="error" v-if="errorMsg">
+              <p>{{ errorMsg }}</p>
+            </div>
             <custom-input-text @getName="setName"></custom-input-text>
             <custom-input-file @getIcon="setIcon"></custom-input-file>
             <custom-input-color @getIconBackground="setIconBackground"></custom-input-color>
@@ -26,7 +29,12 @@
         </div>
       </div>
     </div>
-    <modal-success v-if="showModal" @close="closeModal"></modal-success>
+    <transition name="modal">
+      <modal-success v-if="showModalSuccess" @close="closeModalSuccess"></modal-success>
+    </transition>
+    <transition name="modal">
+      <modal-warning v-if="showModalWarning" @close="closeModalWarning"></modal-warning>
+    </transition>
   </div>
 </template>
 
@@ -38,6 +46,7 @@ import CardPreviewAppVue from "./components/CardPreviewApp.vue";
 import CustomInputFileVue from "./components/CustomInputFile.vue";
 
 import ModalSuccessVue from "./components/modal-success";
+import ModalWarningVue from "./components/modal-warning";
 
 export default {
   name: "App",
@@ -47,7 +56,8 @@ export default {
     "custom-input-color": CustomInputColorVue,
     "custom-select": CustomSelectVue,
     "card-preview-app": CardPreviewAppVue,
-    "modal-success": ModalSuccessVue
+    "modal-success": ModalSuccessVue,
+    "modal-warning": ModalWarningVue
   },
   data() {
     return {
@@ -55,7 +65,9 @@ export default {
       icon: "",
       iconBackground: "",
       category: "",
-      showModal: false
+      errorMsg: "",
+      showModalSuccess: false,
+      showModalWarning: false
     };
   },
   methods: {
@@ -75,8 +87,12 @@ export default {
       this.category = payload.category;
     },
 
-    closeModal(payload) {
-      this.showModal = payload.modal;
+    closeModalSuccess(payload) {
+      this.showModalSuccess = payload.modal;
+    },
+
+    closeModalWarning(payload) {
+      this.showModalWarning = payload.modal;
     },
 
     saveApp() {
@@ -87,7 +103,16 @@ export default {
       appForm["background"] = this.iconBackground;
       appForm["category"] = this.category;
 
-      this.showModal = true;
+      for (const key in appForm) {
+        if (appForm[key] == "") {
+          this.errorMsg = "Preencha todos os campos!";
+          return;
+        }
+      }
+
+      this.errorMsg = "";
+      this.showModalSuccess = true;
+
       console.log(appForm);
     }
   }
@@ -129,6 +154,7 @@ body {
     position: absolute;
     top: 12px;
     right: 12px;
+    cursor: pointer;
   }
 
   .line-right::after {
@@ -152,6 +178,17 @@ body {
     font-size: 1.4rem;
     font-weight: 600;
     margin: 0px 0px 22px;
+  }
+
+  .error {
+    background-color: #f33748;
+    color: #fff;
+    border-radius: 4px;
+    padding: 6px 10px;
+
+    p {
+      margin: 0px;
+    }
   }
 }
 
@@ -178,6 +215,7 @@ body {
     font-weight: 600;
     font-size: 0.8rem;
     border-radius: 4px;
+    cursor: pointer;
   }
 }
 
@@ -225,5 +263,15 @@ body {
       width: 100%;
     }
   }
+}
+
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity 0.5s;
+}
+
+.modal-enter,
+.modal-leave-to {
+  opacity: 0;
 }
 </style>
