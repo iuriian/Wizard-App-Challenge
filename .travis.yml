@@ -3,13 +3,12 @@ language: node_js
 node_js:
 - 10
 dist: trusty
-deploy:
-  provider: heroku
-  app: wizard-app-challenge
-  skip_cleanup: true
-  api_key:
-    secure: $HK_KEY
-  on: master
+before_script: 
+  deploy:
+    provider: heroku
+    app: wizard-app-challenge
+    skip_cleanup: true
+    on: master
 
 jobs:
   include:
