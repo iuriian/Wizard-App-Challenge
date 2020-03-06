@@ -1,25 +1,20 @@
 os: linux
-
 language: node_js
-
 node_js:
-  - 10
-
+- 10
 dist: trusty
-
 deploy:
   provider: heroku
-  app: "wizard-app-challenge"
+  app: wizard-app-challenge
   skip_cleanup: true
   api_key:
     secure: ${HK_KEY}
   on: master
-
 jobs:
   include:
-    - stage: tests
-      name: "Unit tests"
-      script: "npm run test:unit"
-    - stage: deploy
-      name: "Deploy to production"
-      script: "npm run build"
+  - stage: tests
+    name: Unit tests
+    script: npm run test:unit
+  - stage: deploy
+    name: Deploy to production
+    script: npm run build
