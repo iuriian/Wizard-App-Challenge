@@ -8,9 +8,10 @@ node_js:
 dist: trusty
 
 deploy:
-  provider: heroku
+  provider: heroku,
+  app: "app-production"
   api_key:
-    secure: 6b3d62c075dc391d614ccb4014542e762be3ff73
+    secure: ${HK_KEY}
   on: master
 
 jobs:
