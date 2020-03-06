@@ -9,7 +9,7 @@ dist: trusty
 
 deploy:
   provider: heroku
-  app: "app-production"
+  app: "wizard-app-challenge"
   skip_cleanup: true
   api_key:
     secure: ${HK_KEY}
