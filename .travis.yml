@@ -3,13 +3,9 @@ language: node_js
 node_js:
 - 10
 dist: trusty
-before_script: 
-  deploy:
-    provider: heroku
-    app: wizard-app-challenge
-    skip_cleanup: true
-    on: master
-
+deploy:
+  api_key:
+    secure: GhqEkUuOoTRHZIvikLhSgPjARE86X0jzo6BVNUGlM54xAPdKO2C/lLHjw/jBLDs8z4Y8csEPDTB8Gmt209iURIgt0Yaxh/yvdEULWhx4T7JM8dZHWgzAX06Nny7Gltxdhpa2/kVWgIr2M5AfWOhdxZkxbTyc+LKQcEMeOhnlm/RxOfWKCHAAdr+TwfHmWQLdGJXERuIQrOlB18n+Y9icxaJpVZNG7Qirf530RgKF9KbDvtdbCFQbO8ZupQudS+79pbARZ8xTzpvKAWO6mNL6XbS9yx7JW/jOKp4OFk1ksW7YU8OaHG8kSdOb/hZe6VHEy38XRRdwURmJT6pJpDwbdQCywCnKGEWTdpJJKl/mQFMrL0ZO7Su4sX0V/43AxM2bik3l0OKwlCiEAz032/UW2cjOt7GKCMZA7uGpHA2kXalSn1nCvllYEpdLw+mrZKuGGFSVTrlSMG8gWcdg9yWk42XoZEHGEZTyQYULeLKXjTdPFfGvnzibWuXfrBYufK5bcR9QbsmrEFLEbARpiOmfI+qzLF5pbCy2mF/i8U7lWrfLNNWkKCup0D3wThCnD91rLYYRK9qCgdzYaaCQEtio/gt9WUTxjbBzyQSOVvdocox+EfQRLrGHx6e570CSroBPYhVQ6LKLV2sNPFC6X9tZn5LWj1D67I85p8APGzKKHXs=
 jobs:
   include:
   - stage: tests
