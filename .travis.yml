@@ -8,8 +8,9 @@ node_js:
 dist: trusty
 
 deploy:
-  provider: heroku,
+  provider: heroku
   app: "app-production"
+  skip_cleanup: true
   api_key:
     secure: ${HK_KEY}
   on: master
