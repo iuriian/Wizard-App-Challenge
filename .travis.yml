@@ -10,6 +10,10 @@ deploy:
   api_key:
     secure: ${HK_KEY}
   on: master
+
+before_script:
+  - echo $GH_REF
+  - echo GH_REF
 jobs:
   include:
   - stage: tests
