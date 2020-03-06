@@ -1,0 +1,23 @@
+os: linux
+
+language: node_js
+
+node_js:
+  - 12
+
+dist: trusty
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: 6b3d62c075dc391d614ccb4014542e762be3ff73
+  on: master
+
+jobs:
+  include:
+    - stage: tests
+      name: "Unit tests"
+      script: "npm run test:unit"
+    - deploy: deploy
+      name: "Deploy to production"
+      script: "npm run build"
