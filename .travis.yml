@@ -20,6 +20,6 @@ jobs:
     - stage: tests
       name: "Unit tests"
       script: "npm run test:unit"
-    - deploy: deploy
+    - stage: deploy
       name: "Deploy to production"
       script: "npm run build"
