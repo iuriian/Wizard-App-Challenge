@@ -1,7 +1,6 @@
 os: linux,
 language: node_js
-node_js:
-  stable
+node_js: stable
 dist: trusty
 cache: npm
 jobs:
@@ -9,12 +8,10 @@ jobs:
     stage: deploy,
     name: Deploy to production
     script: npm run build
-    
-deploy: 
+deploy:
   provider: heroku
-  skip_cleanup: true
-  api_key: 
-    secure: $HK_KEY
-  app: $APP_NAME
-  on: master
-  github_token: $GH_TOKEN
+  api_key:
+    secure: Opu6wHy/a0dKH04Vx/lPM2g3pp+BLscbnB4wmkcoC0FOR/uixMOy/xoHf386TIhFMbPHW2S0V4WOz5880uIbDKOa/3KZggkNaE8HNBJhbYX1SZwC3BjEMCaXY9PZvdrJFipPMLpZuVq5whBHNhzb01h4rjD7inC7f93v5Z4tI5sPqUkna/DFOYhmWNnCxvBYIK3fKlzSY4I5aOdJ0UVU2VULJ3DXPGtP40RbnCbd5Hw/8gWd4oZancMHclfv2n1qNFneYSV1NndZX5fJLbHHXovOWCjQQe6anGTS3QAI42OAxFKWncYF/7MgZwa8LUGg1GJ2tFbgoXOXfQZSNZV4DuhdWcGWZwHKpFmLN4reeletuiawM9rT92mvvYAJbju3ZxdSQl+Wtd8Wlr7vlyiC+onei/MBJ+c9G2xr+kezmR8mobA/pefG3rWE+TEaI1mz55PlxctmvRqARO4uyyRWwJs0jo9khCn5jszmrnoYKtaFgR8DyiYz258Ms5VrqyT7UxOsnSACM3P/BO3rPEo+UiI/+Kr8iQShj5MibUOcYJl3NhS0unpG2oqR5kcBA753g8Dch/vxq4f9NsrF3JGLITfPpREIJsLOQzFqcwKOh7lMsgI1CyjII2y1hqaCa7523yQOdUHB93TjU4EohqA4xTftvnBmgMAlV4SmeAunmqM=
+  app: wizard-app-challenge
+  on:
+    repo: iuriian/wizard-app-challenge
