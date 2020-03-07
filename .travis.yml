@@ -12,6 +12,7 @@ jobs:
     
 deploy: 
   provider: heroku
+  skip_cleanup: true
   api_key: 
     secure: $HK_KEY
   on: master
