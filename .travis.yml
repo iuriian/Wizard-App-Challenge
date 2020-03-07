@@ -15,5 +15,6 @@ deploy:
   skip_cleanup: true
   api_key: 
     secure: $HK_KEY
+  app: $APP_NAME
   on: master
-  github_token: GH_TOKEN
+  github_token: $GH_TOKEN
