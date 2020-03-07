@@ -1,19 +1,18 @@
-os: linux
+os: linux,
 language: node_js
 node_js:
-- 10
+  stable
 dist: trusty
 cache: npm
-
 jobs:
   include:
-    - stage: deploy
-      name: Deploy to production
-      script: npm run build
-
-deploy:
+    stage: deploy,
+    name: Deploy to production
+    script: npm run build
+    
+deploy: 
   provider: heroku
-  api_key:
-    secure: dPqR1nG/4iAwqfQaGPZd5N64KMFFGQZFETzFSTPX2GvC4d1Rs8q1Qfecxzsj3jZSNA6CWrrX28RO2IWNWX0ZnMRN9n+yWN3+gryRcfsPIVafCk8RJrxI4OYNuDMPzS1OtJaUXfJ8AUfvP6KAZXnNK1pzKgI9R9fK5aU2VqOyX78SGkkAKLEOqcyIiSdq4gifMhrG1c7Xtq2Ak+kM/lcRT6kGGuecKfvX0006DSjbRPXRb0fB4DvDNdFdVdSB2TmzBcFkOdHnX8YB5BHZMCaPsGfw0381GCcSx/usGx8D/Kwa5pSBun5XlZklCiN6fMthhf0nlBjClTcXxu4uWBbDnlXaRqeFI3YuLmNePZ4t92XVRadlPMpXU1cWPGo+SbiYi3fJbxvukTtmd7oBGU5PdDMzYAXgwPMjiSi7YgKlZwgqY8Lkm23veWe3BD96HBJJyET+57D4ctriLygzfeK9OvMNqQpUoS2lSWa2pvtuRqZwE9/FMh9MjfO1OebUmxY5U4/vLu8nw3JpaUFu0/ztPFuaG3bY+SPgYrqIXtxvtKyakrlpyk+1cuSPsv5BO5wuCE8upVeXrDGnJI+64O48ze1EZxldvFXmTMyaOjKESw6CCzVU19h47vhTFAhX8gC9eSP8OnBjsvkUL3cXD7QAe55ascUHB0CPPah/N7R+h1M=
+  api_key: 
+    secure: $HK_KEY
   on: master
-  github_token: 549a7edfa7418fd0e806c8ec9bf7fcf0be9417b4
+  github_token: GH_TOKEN
